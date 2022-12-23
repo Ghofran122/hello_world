@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hello_world/modules/estishara_app/consult_screen/consult.dart';
 import 'package:hello_world/modules/estishara_app/signin_screen/signin.dart';
+import 'package:hello_world/modules/estishara_app/signup_screen/signup_controller.dart';
 import 'package:hello_world/shared/components/components.dart';
 
-class SingUp extends StatefulWidget {
+class SignUp extends StatefulWidget {
   @override
-  State<SingUp> createState() => _SingUpState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SingUpState extends State<SingUp> {
+class _SignUpState extends State<SignUp> {
+
+  List<String> types = ['user', 'expert'];
+  String? selectedType = 'user';
+
   var emailController = TextEditingController();
 
   var nameController = TextEditingController();
@@ -76,19 +82,26 @@ class _SingUpState extends State<SingUp> {
                   ),
                   Container(
                     width: double.infinity,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Sign up as',
+                          'Sign up as:',
                           style: TextStyle(
                             fontSize: 25.0
                           ),
                         ),
                         SizedBox(
-                          height: 15.0,
+                          width: 10.0,
                         ),
-                        Row(
+                        defaultDropdownButtonFormField(
+                          items: types,
+                          selectedItem: selectedType!,
+                          onChange: (item) => setState(() {
+                            selectedType = item;
+                          }),
+                        ),
+                        /*Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
@@ -149,11 +162,11 @@ class _SingUpState extends State<SingUp> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    /*Icon(
+                                    *//*Icon(
                                       Icons.female,
                                       color: Colors.white,
                                       size: 80.0,
-                                    ),*/
+                                    ),*//*
                                     Text(
                                       'User',
                                       style: TextStyle(
@@ -166,7 +179,7 @@ class _SingUpState extends State<SingUp> {
                               ),
                             ),
                           ],
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
@@ -319,6 +332,13 @@ class _SingUpState extends State<SingUp> {
                             print(passwordController.text);
                             print(cPasswordController.text);
                           }
+                          /*Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Consult(),
+                            ),
+                                (route) => false,
+                          );*/
                         },
                       ),
                     ],
@@ -365,6 +385,7 @@ class _SingUpState extends State<SingUp> {
                               ),
                                   (route) => false,
                             );
+
                           }
                       ),
                     ],

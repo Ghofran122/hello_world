@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hello_world/modules/estishara_app/signin_screen/signin_controller.dart';
 import 'package:hello_world/modules/estishara_app/signup_screen/sing_up.dart';
 import 'package:hello_world/shared/components/components.dart';
 
@@ -10,6 +12,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+
   var emailController = TextEditingController();
 
   var passwordController = TextEditingController();
@@ -159,7 +162,7 @@ class _SignInState extends State<SignIn> {
                           Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SingUp(),
+                                builder: (context) => SignUp(),
                             ),
                             (route) => false,
                           );
