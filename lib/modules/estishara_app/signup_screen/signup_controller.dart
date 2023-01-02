@@ -3,6 +3,7 @@ import 'package:hello_world/models/signup.dart';
 import 'package:hello_world/modules/estishara_app/signup_screen/signup_service.dart';
 
 class SignUpController extends GetxController{
+  String? type = '';
   String? name = '';
   String? email = '';
   String? password = '';

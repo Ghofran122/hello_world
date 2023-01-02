@@ -7,8 +7,8 @@ class SignupService{
   
   var url =Uri.parse(ServerConfig.domainNameServer + ServerConfig.SignupUser);
   
-  signup(SignupModels SignUpModels) async {
-    var response = await http.post(
+  signup(SignupModels SignUpModels) /*async*/ {
+    var response = /*await*/ http.post(
       url,
       headers: {
 
@@ -16,11 +16,11 @@ class SignupService{
       body: {
         'name': SignUpModels.name,
         'email': SignUpModels.email,
-        'email': SignUpModels.password,
+        'password': SignUpModels.password,
         'password_confirmation': SignUpModels.passwordConfirm,
       },
     );
-    print(response.statusCode);
-    print(response.body);
+    /*print(response.statusCode);
+    print(response.body);*/
   }
 }

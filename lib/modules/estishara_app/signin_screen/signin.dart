@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hello_world/modules/estishara_app/consult_screen/consult.dart';
+import 'package:hello_world/modules/estishara_app/info_add_screen/info_add.dart';
 import 'package:hello_world/modules/estishara_app/signin_screen/signin_controller.dart';
 import 'package:hello_world/modules/estishara_app/signup_screen/sing_up.dart';
 import 'package:hello_world/shared/components/components.dart';
@@ -143,6 +145,14 @@ class _SignInState extends State<SignIn> {
                           if(formKey.currentState!.validate()){
                             print(emailController.text);
                             print(passwordController.text);
+                            /*Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Consult(),
+                              ),
+                              //(route) => false,
+                            );*/
+                            Get.toNamed('/consult');
                           }
                         }
                       ),
@@ -159,13 +169,14 @@ class _SignInState extends State<SignIn> {
                       ),
                       TextButton(
                         onPressed: (){
-                          Navigator.pushAndRemoveUntil(
+                          /*Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => SignUp(),
                             ),
                             (route) => false,
-                          );
+                          );*/
+                          Get.toNamed('/signup');
                         },
                         child: Text(
                           'Sign up',

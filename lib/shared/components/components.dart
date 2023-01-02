@@ -3,7 +3,7 @@ import 'package:hello_world/modules/estishara_app/expert_profile_screen/expert_p
 
 Widget defaultTextFormField({
   required String textLable,
-  required Icon pIcon,
+  Icon? pIcon,
   required TextInputType textInputType,
   required TextEditingController controllerText,
   required Function validat,
@@ -56,10 +56,11 @@ Widget defaultMaterialButton({
   Color? colorMaterialButton,
   required Icon icon,
   double weidth = 50.0,
+  double hight = 10.0,
   BorderSide borderSideButton = BorderSide.none,
   required Function onPresse,
 }) => MaterialButton(
-  height: 10.0,
+  height: hight,
   onPressed: (){
       onPresse();
     },
@@ -233,4 +234,81 @@ Widget defaultDropdownButtonFormField({
       borderRadius: BorderRadius.circular(30.0),
     ),
   ),
+);
+
+Widget defaultTextField({
+  required String text,
+  String? discribtionText,
+  double? fieldWidth = double.infinity,
+  double? fieldHeight = 45.0,
+}) => Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    Padding(
+      padding: const EdgeInsetsDirectional.only(
+          start: 20.0,
+          bottom: 6.0
+      ),
+      child: Text(
+        discribtionText!,
+        style: TextStyle(
+          color: Colors.grey[500],
+          fontWeight: FontWeight.w400,
+          fontStyle: FontStyle.italic,
+        ),
+      ),
+    ),
+    Material(
+      color: Colors.white,
+      elevation: 10.0,
+      borderRadius: BorderRadiusDirectional.circular(30.0),
+      shadowColor: Colors.grey[100],
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.0),
+          //border: BoxBorder(BorderSide.none),
+        ),
+        height: fieldHeight,
+        width: fieldWidth,
+        padding: EdgeInsetsDirectional.only(
+          start: 20.0,
+          end: 10.0,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              text,
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  ],
+);
+
+Widget defaultMaterialButtonText({
+  Color? colorMaterialButton,
+  required Text text,
+  double weidth = 50.0,
+  double hight = 10.0,
+  BorderSide borderSideButton = BorderSide.none,
+  required Function onPresse,
+}) => MaterialButton(
+  height: hight,
+  onPressed: (){
+    onPresse();
+  },
+  color: colorMaterialButton,
+  child: text,
+  shape: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(30.0),
+    borderSide: borderSideButton,
+  ),
+  minWidth: weidth,
 );

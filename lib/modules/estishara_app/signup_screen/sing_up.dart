@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hello_world/modules/estishara_app/consult_screen/consult.dart';
+import 'package:hello_world/modules/estishara_app/info_add_screen/info_add.dart';
 import 'package:hello_world/modules/estishara_app/signin_screen/signin.dart';
 import 'package:hello_world/modules/estishara_app/signup_screen/signup_controller.dart';
 import 'package:hello_world/shared/components/components.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -77,112 +79,7 @@ class _SignUpState extends State<SignUp> {
                       fontSize: 16.0,
                     ),
                   ),
-                  SizedBox(
-                    height: 25.0,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Sign up as:',
-                          style: TextStyle(
-                            fontSize: 25.0
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        defaultDropdownButtonFormField(
-                          items: types,
-                          selectedItem: selectedType!,
-                          onChange: (item) => setState(() {
-                            selectedType = item;
-                          }),
-                        ),
-                        /*Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 100.0,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadiusDirectional.circular(20.0),
-                                color: expert ? Colors.indigoAccent : Colors.grey[600],
-                              ),
-                              child: GestureDetector(
-                                onTap: () {
 
-                                  setState(() {
-                                    expert = true;
-                                    type = 'Expert';
-                                  });
-                                },
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Expert',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 15.0,
-                            ),
-                            Text(
-                                'or',
-                              style: TextStyle(
-                                fontSize: 20.0
-                              ),
-                            ),
-                            SizedBox(
-                              width: 15.0,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  expert = false;
-                                  type = 'User';
-                                });
-                              },
-                              child: Container(
-                                width: 100.0,
-                                height: 40.0,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadiusDirectional.circular(20.0),
-                                  color: expert ? Colors.grey[600] : Colors.indigoAccent,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    *//*Icon(
-                                      Icons.female,
-                                      color: Colors.white,
-                                      size: 80.0,
-                                    ),*//*
-                                    Text(
-                                      'User',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),*/
-                      ],
-                    ),
-                  ),
                   SizedBox(
                     height: 45.0,
                   ),
@@ -319,27 +216,22 @@ class _SignUpState extends State<SignUp> {
                         width: 10.0,
                       ),
                       defaultMaterialButton(
-                        colorMaterialButton: Colors.indigoAccent,
-                        icon: Icon(
-                          Icons.arrow_forward_outlined,
-                          color: Colors.white,
-                        ),
-                        borderSideButton: BorderSide.none,
-                        onPresse: (){
-                          if(formKey.currentState!.validate()){
-                            print(nameController.text);
-                            print(emailController.text);
-                            print(passwordController.text);
-                            print(cPasswordController.text);
+                          colorMaterialButton: Colors.indigoAccent,
+                          icon: Icon(
+                            Icons.arrow_forward_outlined,
+                            color: Colors.white,
+                          ),
+                          borderSideButton: BorderSide.none,
+                          onPresse: (){
+                            /*Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AddInformation(),
+                              ),
+                              //(route) => false,
+                            );*/
+                            Get.toNamed('/addInformation');
                           }
-                          /*Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Consult(),
-                            ),
-                                (route) => false,
-                          );*/
-                        },
                       ),
                     ],
                   ),
@@ -354,13 +246,14 @@ class _SignUpState extends State<SignUp> {
                       ),
                       TextButton(
                         onPressed: (){
-                          Navigator.pushAndRemoveUntil(
+                          /*Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
                               builder: (context) => SignIn(),
                             ),
                                 (route) => false,
-                          );
+                          );*/
+                          Get.toNamed('/signin');
                         },
                         child: Text(
                           'Sign in',
@@ -369,24 +262,6 @@ class _SignUpState extends State<SignUp> {
                             color: Colors.indigoAccent,
                           ),
                         ),
-                      ),
-                      defaultMaterialButton(
-                          colorMaterialButton: Colors.indigoAccent,
-                          icon: Icon(
-                            Icons.arrow_forward_outlined,
-                            color: Colors.white,
-                          ),
-                          borderSideButton: BorderSide.none,
-                          onPresse: (){
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Consult(),
-                              ),
-                                  (route) => false,
-                            );
-
-                          }
                       ),
                     ],
                   ),

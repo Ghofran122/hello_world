@@ -8,6 +8,8 @@ import 'package:hello_world/shared/components/components.dart';
 
 class Expert extends StatelessWidget {
 
+  var searchController = TextEditingController();
+
   List<ExpertModel> users = [
     ExpertModel(
       nameM: 'Ala\'a',
@@ -103,11 +105,12 @@ class Expert extends StatelessWidget {
             color: Colors.indigoAccent,
           ),
           onPressed: (){
-              Navigator.pop(
+              /*Navigator.pop(
                   context,
                   MaterialPageRoute(
                     builder: (context) => Consult(),
-                  ));
+                  ));*/
+            Get.toNamed('/consult');
             }),
         title: Text(
           'Expert',
@@ -119,23 +122,59 @@ class Expert extends StatelessWidget {
           ),
         ),
       ),
-      body: TextButton(
-        style: ButtonStyle(
-          padding: MaterialStatePropertyAll(EdgeInsetsDirectional.zero),
-          overlayColor: MaterialStatePropertyAll(Colors.white),
+      body: Padding(
+        padding: const EdgeInsetsDirectional.only(
+          top: 25.0,
+          //bottom: 20.0,
         ),
-        onPressed: (){
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ExpertProfile(),
-            ),
-          );
-        },
-        child: ListView.separated(
-          itemBuilder: (context, index) => expertItem(users[index]),
-          separatorBuilder: (context, index) => SizedBox(),
-          itemCount: users.length,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              defaultTextFormField(
+                boxWidth: 400.0,
+                boxHeight: 35.0,
+                boxColor: Colors.white24,
+                textLable: 'Search',
+                pIcon: Icon(
+                  Icons.search,
+                  size: 18.0,
+                  color: Colors.black45,
+                ),
+                textInputType: TextInputType.text,
+                controllerText: searchController,
+                validat: (String value){
+                  if(value.isEmpty){
+                    print('Search should not be empty');
+                  }
+                },
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              TextButton(
+                style: ButtonStyle(
+                  padding: MaterialStatePropertyAll(EdgeInsetsDirectional.zero),
+                  overlayColor: MaterialStatePropertyAll(Colors.white),
+                ),
+                onPressed: (){
+                  /*Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExpertProfile(),
+                    ),
+                  );*/
+                  Get.toNamed('/expertProfile');
+                },
+                child: ListView.separated(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => expertItem(users[index]),
+                  separatorBuilder: (context, index) => SizedBox(),
+                  itemCount: users.length,
+                ),
+              ),
+            ],
+          ),
         ),
       )
     );

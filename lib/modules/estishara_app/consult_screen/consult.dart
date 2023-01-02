@@ -37,11 +37,12 @@ class Consult extends StatelessWidget {
               ),
               iconSize: 40.0,
               onPressed: (){
-                Navigator.push(
+                /*Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => UserProfilePersonal(),
-                    ));
+                    ));*/
+                Get.toNamed('/userProfilePersonal');
               }),
         ],
       ),
@@ -78,12 +79,13 @@ class Consult extends StatelessWidget {
             defaultTextButton(
               titleAdvice: 'Medical advice',
               onPressTB: (){
-                Navigator.push(
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => Expert(),
                   ),
-                );
+                );*/
+                Get.toNamed('/expert');
               },
             ),
             SizedBox(
@@ -92,12 +94,13 @@ class Consult extends StatelessWidget {
             defaultTextButton(
               titleAdvice: 'Psychological advice',
               onPressTB: (){
-                Navigator.push(
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => Expert(),
                   ),
-                );
+                );*/
+                Get.toNamed('/expert');
               },
             ),
             SizedBox(
@@ -106,12 +109,13 @@ class Consult extends StatelessWidget {
             defaultTextButton(
               titleAdvice: 'Economic advice',
               onPressTB: (){
-                Navigator.push(
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => Expert(),
                   ),
-                );
+                );*/
+                Get.toNamed('/expert');
               },
             ),
           ],
