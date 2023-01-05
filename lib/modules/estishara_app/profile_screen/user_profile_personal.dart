@@ -30,6 +30,15 @@ class UserProfilePersonal extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Center(
+                    child: defaultCircollerAvatar(
+                      ImageProfileAssetsPath: 'assets/images/profile.png',
+                      radius: 50.0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15.0,
+                  ),
                   defaultTextField(
                     discribtionText: 'Name:',
                     text: 'Aya Hammad',

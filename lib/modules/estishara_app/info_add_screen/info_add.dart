@@ -34,17 +34,31 @@ class _AddInformationState extends State<AddInformation> {
         elevation: 0.0,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsetsDirectional.only(
+          top: 5.0,
+          bottom: 50.0,
+          start: 20.0,
+          end: 20.0,
+        ),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                /*Text(
                   'Add your information:',
                   style: TextStyle(
-                    fontSize: 30.0,
+                    fontSize: 25.0,
                     fontWeight: FontWeight.w400,
+                  ),
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),*/
+                Center(
+                  child: defaultCircollerAvatar(
+                    ImageProfileAssetsPath: 'assets/images/profile.png',
+                    radius: 50.0,
                   ),
                 ),
                 SizedBox(
@@ -224,6 +238,9 @@ class _AddInformationState extends State<AddInformation> {
                           }
                         }
                       ),
+                      /*SizedBox(
+                        height: 20.0,
+                      ),*/
                     ],
                   ),
                 ),
