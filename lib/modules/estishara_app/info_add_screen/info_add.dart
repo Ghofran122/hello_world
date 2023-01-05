@@ -15,6 +15,8 @@ class _AddInformationState extends State<AddInformation> {
 
   String? selectedConsult = 'Medical';
 
+  var type = Get.arguments;
+
   var experienceController = TextEditingController();
 
   var phoneNumberController = TextEditingController();
@@ -121,25 +123,88 @@ class _AddInformationState extends State<AddInformation> {
                 SizedBox(
                   height: 10.0,
                 ),
-                defaultDropdownButtonFormField(
+                /*defaultDropdownButtonFormField(
                   items: consult,
                   selectedItem: selectedConsult!,
                   onChange: (item) => setState(() {
                     selectedConsult = item;
                   }),
                   widthBox: 300.0,
+                ),*/
+                Material(
+                  elevation: 10.0,
+                  shadowColor: Colors.grey[100],
+                  borderRadius: BorderRadius.circular(30.0),
+                  color: Colors.white,
+                  child: Container(
+                    width: 300.0,
+                    height: 50.0,
+                    child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: EdgeInsetsDirectional.all(8.0),
+                      ),
+                      value: selectedConsult,
+                      items: consult.map(
+                              (item) => DropdownMenuItem<String>(
+                            value: item,
+                            child: Text(
+                              item,
+                              style: TextStyle(
+                                fontSize: 20.0,
+                              ),
+                            ),
+                          )
+                      ).toList(),
+                      onChanged: (item) => setState(() {
+                        selectedConsult = item;
+                      }),
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 40.0,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    defaultMaterialButton(
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      defaultMaterialButton(
+                          hight: 25.0,
+                          colorMaterialButton: Colors.indigoAccent,
+                          icon: Icon(
+                            Icons.arrow_back_outlined,
+                            color: Colors.white,
+                          ),
+                          borderSideButton: BorderSide.none,
+                          onPresse: (){
+                            /*Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignUp(),
+                              ),
+                              //(route) => false,
+                            );*/
+                            if(type == 'expert') {
+                              Get.offAndToNamed(
+                                  '/signup',
+                                  arguments: 'expert'
+                              );
+                            }
+                            //Get.offAndToNamed('/signup');
+                          }
+                      ),
+                      SizedBox(
+                        width: 250.0,
+                      ),
+                      defaultMaterialButton(
                         hight: 25.0,
                         colorMaterialButton: Colors.indigoAccent,
                         icon: Icon(
-                          Icons.arrow_back_outlined,
+                          Icons.arrow_forward_outlined,
                           color: Colors.white,
                         ),
                         borderSideButton: BorderSide.none,
@@ -147,36 +212,20 @@ class _AddInformationState extends State<AddInformation> {
                           /*Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SignUp(),
+                              builder: (context) => Consult(),
                             ),
                             //(route) => false,
                           );*/
-                          Get.toNamed('/signup');
+                          if(type == 'expert') {
+                            Get.offAndToNamed(
+                                '/homeLayoutExpert',
+                                arguments: 'expert'
+                            );
+                          }
                         }
-                    ),
-                    SizedBox(
-                      width: 350.0,
-                    ),
-                    defaultMaterialButton(
-                      hight: 25.0,
-                      colorMaterialButton: Colors.indigoAccent,
-                      icon: Icon(
-                        Icons.arrow_forward_outlined,
-                        color: Colors.white,
                       ),
-                      borderSideButton: BorderSide.none,
-                      onPresse: (){
-                        /*Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Consult(),
-                          ),
-                          //(route) => false,
-                        );*/
-                        Get.toNamed('/consult');
-                      }
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),

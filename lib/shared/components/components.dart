@@ -74,19 +74,30 @@ Widget defaultMaterialButton({
 );
 
 Widget defaultCircollerAvatar({
-  double radius = 25.0,
+  double radius = 22.0,
   Icon? imageProfile,
-}) => CircleAvatar(
-  maxRadius: radius,
-  //backgroundImage: ExactAssetImage(imageProfile),
-  backgroundColor: Colors.grey[300],
-  child: imageProfile,
+  String? ImageProfileAssetsPath,
+  double? minRadius,
+  Function? ontap,
+}) => GestureDetector(
+  onTap: (){
+    ontap!();
+  },
+  child:   CircleAvatar(
+    maxRadius: radius,
+    //backgroundImage: ExactAssetImage(imageProfile),
+    backgroundColor: Colors.grey[300],
+    child: imageProfile,
+    backgroundImage: ExactAssetImage(ImageProfileAssetsPath!),
+    minRadius: minRadius,
+  ),
 );
 
 Widget defaultExpertItem({
-  required Icon profileImage,
+  //required Icon profileImage,
   required name,
   required experianc,
+  String? imageProfile,
 }) => Column(
   children: [
 /*    SizedBox(
@@ -104,7 +115,8 @@ Widget defaultExpertItem({
         child: Row(
           children: [
             defaultCircollerAvatar(
-              imageProfile: profileImage,
+              //imageProfile: profileImage,
+              ImageProfileAssetsPath: imageProfile,
             ),
             Padding(
               padding: const EdgeInsetsDirectional.only(
@@ -162,10 +174,13 @@ Widget defaultExpertItem({
 Widget defaultTextButton({
   required String titleAdvice,
   required Function onPressTB,
+  double widthButton = double.infinity,
+  double? heightButton,
 }) => Material(
   elevation: 10.0,
   child: Container(
-    width: double.infinity,
+    width: widthButton,
+    height: heightButton,
     //padding: EdgeInsetsDirectional.all(0.0),
     decoration: BoxDecoration(
       border: Border.all(

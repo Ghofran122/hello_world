@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hello_world/modules/estishara_app/consult_screen/consult.dart';
 import 'package:hello_world/modules/estishara_app/signin_screen/signin.dart';
 import 'package:hello_world/modules/estishara_app/signin_screen/signin_controller.dart';
 import 'package:hello_world/modules/estishara_app/signup_screen/signup_controller.dart';
@@ -13,9 +14,6 @@ class First extends StatefulWidget {
 }
 
 class _FirstState extends State<First> {
-
-  /*SignInController controllerin = Get.find();*/
-  /*SignUpController controllerup = Get.find();*/
 
   List<String> types = ['user', 'expert'];
   String? selectedType = 'user';
@@ -55,13 +53,47 @@ class _FirstState extends State<First> {
                 SizedBox(
                   height: 20.0,
                 ),
-                defaultDropdownButtonFormField(
+                /*defaultDropdownButtonFormField(
                   items: types,
                   selectedItem: selectedType!,
                   onChange: (item) => setState(() {
                     selectedType = item;
                   }),
+                ),*/
+            Material(
+              elevation: 10.0,
+              shadowColor: Colors.grey[100],
+              borderRadius: BorderRadius.circular(30.0),
+              color: Colors.white,
+              child: Container(
+                width: 150.0,
+                height: 50.0,
+                child: DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: EdgeInsetsDirectional.all(8.0),
+                  ),
+                  value: selectedType,
+                  items: types.map(
+                          (item) => DropdownMenuItem<String>(
+                        value: item,
+                        child: Text(
+                          item,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                          ),
+                        ),
+                      )
+                  ).toList(),
+                  onChanged: (item) => setState(() {
+                     selectedType = item;
+                  }),
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
+              ),
+            ),
               ],
             ),
           ),
@@ -83,21 +115,28 @@ class _FirstState extends State<First> {
                 /*Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SignIn(),
+                    builder: (context) => Consult(
+                      type: selectedType,
+                    ),
                   ),
                   //(route) => false,
                 );*/
-                Get.toNamed('/signin');
-                /*p();*/
+                if(selectedType == 'user') {
+                  Get.offAndToNamed(
+                      '/signin',
+                      arguments: 'user'
+                  );
+                }
+                else if(selectedType == 'expert') {
+                  Get.offAndToNamed(
+                      '/signin',
+                      arguments: 'expert'
+                  );
+                }
               }
           ),
         ],
       ),
     );
   }
-  /*void p(){
-    controllerup.type = selectedType;
-    print(controllerup.type);
-    *//*print(controllerin.type);*//*
-  }*/
 }

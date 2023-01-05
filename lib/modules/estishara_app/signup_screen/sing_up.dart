@@ -14,8 +14,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
 
-  List<String> types = ['user', 'expert'];
-  String? selectedType = 'user';
+  var type = Get.arguments;
 
   var emailController = TextEditingController();
 
@@ -42,8 +41,6 @@ class _SignUpState extends State<SignUp> {
   );
 
   bool cIsPasswordShow = true;
-
-  String? type;
 
   @override
   Widget build(BuildContext context) {
@@ -230,13 +227,25 @@ class _SignUpState extends State<SignUp> {
                               ),
                               //(route) => false,
                             );*/
-                            Get.toNamed('/addInformation');
+                            if(type == 'user') {
+                              Get.offAndToNamed(
+                                  '/homeLayoutUser',
+                                  arguments: 'user'
+                              );
+                            }
+                            else if(type == 'expert') {
+                              Get.offAndToNamed(
+                                  '/addInformation',
+                                  arguments: 'expert'
+                              );
+                            }
+                            //Get.toNamed('/addInformation');
                           }
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 2  +0.0,
+                    height: 20.0,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -253,7 +262,19 @@ class _SignUpState extends State<SignUp> {
                             ),
                                 (route) => false,
                           );*/
-                          Get.toNamed('/signin');
+                          if(type == 'user') {
+                            Get.offAndToNamed(
+                                '/signin',
+                                arguments: 'user'
+                            );
+                          }
+                          else if(type == 'expert') {
+                            Get.offAndToNamed(
+                                '/signin',
+                                arguments: 'expert'
+                            );
+                          }
+                          //Get.offAndToNamed('/signin');
                         },
                         child: Text(
                           'Sign in',

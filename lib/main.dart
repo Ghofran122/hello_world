@@ -17,8 +17,13 @@ import 'package:hello_world/modules/estishara_app/consult_screen/consult.dart';
 import 'package:hello_world/modules/estishara_app/expert_profile_screen/expert_profile.dart';
 import 'package:hello_world/modules/estishara_app/expert_screen/expert.dart';
 import 'package:hello_world/modules/estishara_app/first_screen/first.dart';
+import 'package:hello_world/modules/estishara_app/home_layout_screen//home_layout_expert.dart';
+import 'package:hello_world/modules/estishara_app/home_layout_screen//home_layout_user.dart';
 import 'package:hello_world/modules/estishara_app/info_add_screen/info_add.dart';
+import 'package:hello_world/modules/estishara_app/profile_screen/expert_profile_personal.dart';
 import 'package:hello_world/modules/estishara_app/profile_screen/user_profile_personal.dart';
+import 'package:hello_world/modules/estishara_app/reservations_screen/reservations.dart';
+import 'package:hello_world/modules/estishara_app/setting_screen/setting.dart';
 import 'package:hello_world/modules/estishara_app/signin_screen/signin.dart';
 import 'package:get/get.dart';
 import 'package:hello_world/modules/estishara_app/signup_screen/sing_up.dart';
@@ -38,11 +43,17 @@ class MyApp extends StatelessWidget{
         GetPage(name: '/first', page: () => First(),),
         GetPage(name: '/signin', page: () => SignIn(), binding: SigninBinding()),
         GetPage(name: '/signup', page: () => SignUp(), binding: SignupBinding()),
+        GetPage(name: '/setting', page: () => Setting()),
         GetPage(name: '/addInformation', page: () => AddInformation(), binding: AddInformationBinding()),
+        GetPage(name: '/homeLayoutExpert', page: () => HomeLayoutExpert()),
+        GetPage(name: '/homeLayoutUser', page: () => HomeLayoutUser()),
         GetPage(name: '/consult', page: () => Consult(), binding: ConsultBinding()),
         GetPage(name: '/userProfilePersonal', page: () => UserProfilePersonal(),),
+        GetPage(name: '/expertProfilePersonal', page: () => ExpertProfilePersonal(),),
         GetPage(name: '/expert', page: () => Expert(),),
         GetPage(name: '/expertProfile', page: () => ExpertProfile(),),
+        GetPage(name: '/reservayions', page: () => Reservations(),),
+
       ],
     );
   }

@@ -77,15 +77,13 @@ class Expert extends StatelessWidget {
     ),
   ];
 
-  //String profileImageUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png';
-
   String? expName ='Ahmed yosouf';
 
-  Icon profileImageUrl = Icon(
+  /*Icon profileImageUrl = Icon(
     Icons.person,
     size: 45.0,
     color: Colors.white,
-  );
+  );*/
 
   String? experianc ='3 years in pharmasite';
 
@@ -110,7 +108,7 @@ class Expert extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => Consult(),
                   ));*/
-            Get.toNamed('/consult');
+            Get.toNamed('/homeLayoutExpert');
             }),
         title: Text(
           'Expert',
@@ -157,12 +155,12 @@ class Expert extends StatelessWidget {
                   overlayColor: MaterialStatePropertyAll(Colors.white),
                 ),
                 onPressed: (){
-                  /*Navigator.push(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => ExpertProfile(),
                     ),
-                  );*/
+                  );
                   Get.toNamed('/expertProfile');
                 },
                 child: ListView.separated(
@@ -183,6 +181,7 @@ class Expert extends StatelessWidget {
   Widget expertItem(ExpertModel users) => defaultExpertItem(
     name: users.nameM,
     experianc: users.experiancM,
-    profileImage: profileImageUrl,
+    //profileImage: profileImageUrl,
+    imageProfile: 'assets/images/profile.png',
   );
 }

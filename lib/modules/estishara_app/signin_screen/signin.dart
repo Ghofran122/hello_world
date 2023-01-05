@@ -9,11 +9,21 @@ import 'package:hello_world/modules/estishara_app/signup_screen/sing_up.dart';
 import 'package:hello_world/shared/components/components.dart';
 
 class SignIn extends StatefulWidget {
+
+  var type = Get.arguments;
+
   @override
   State<SignIn> createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
+
+
+
+
+  SignInController controller = Get.find();
+
+  var type = Get.arguments;
 
   var emailController = TextEditingController();
 
@@ -73,6 +83,7 @@ class _SignInState extends State<SignIn> {
                     textInputType: TextInputType.emailAddress,
                     textLable: 'Email',
                     controllerText: emailController,
+                    onChang: (value) => controller.email = value,
                     validat: (String value) {
                       if(value.isEmpty){
                         return 'email can not be empty';
@@ -143,7 +154,7 @@ class _SignInState extends State<SignIn> {
                           borderSideButton: BorderSide.none,
                         onPresse: (){
                           if(formKey.currentState!.validate()){
-                            print(emailController.text);
+                            print(controller.email);
                             print(passwordController.text);
                             /*Navigator.push(
                               context,
@@ -152,7 +163,18 @@ class _SignInState extends State<SignIn> {
                               ),
                               //(route) => false,
                             );*/
-                            Get.toNamed('/consult');
+                            if(type == 'user') {
+                              Get.offAndToNamed(
+                                  '/homeLayoutUser',
+                                  arguments: 'user'
+                              );
+                            }
+                            else if(type == 'expert') {
+                              Get.offAndToNamed(
+                                  '/homeLayoutExpert',
+                                  arguments: 'expert'
+                              );
+                            }
                           }
                         }
                       ),
@@ -176,7 +198,18 @@ class _SignInState extends State<SignIn> {
                             ),
                             (route) => false,
                           );*/
-                          Get.toNamed('/signup');
+                          if(type == 'user') {
+                            Get.offAndToNamed(
+                                '/signup',
+                                arguments: 'user'
+                            );
+                          }
+                          else if(type == 'expert') {
+                            Get.offAndToNamed(
+                                '/signup',
+                                arguments: 'expert'
+                            );
+                          }
                         },
                         child: Text(
                           'Sign up',
