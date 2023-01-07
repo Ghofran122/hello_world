@@ -10,9 +10,9 @@ class EditExpertProfile extends StatefulWidget {
 
 class _EditExpertProfileState extends State<EditExpertProfile> {
 
-  List<String> consult = ['Medical', 'Psychological', 'Economic'];
+  List<String> consult = ['Medical'.tr, 'Psychological'.tr, 'Economic'.tr];
 
-  String? selectedConsult = 'Medical';
+  String? selectedConsult = 'Medical'.tr;
 
   var nameController = TextEditingController();
 
@@ -40,7 +40,9 @@ class _EditExpertProfileState extends State<EditExpertProfile> {
     color: Colors.grey[600],
   );
 
-  var type = Get.arguments;
+  var type = Get.arguments[0];
+
+  var lang = Get.arguments[1];
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +71,7 @@ class _EditExpertProfileState extends State<EditExpertProfile> {
                 ),
                 defaultTextFormField(
                   textInputType: TextInputType.name,
-                  textLable: 'Name',
+                  textLable: 'Name'.tr,
                   pIcon: Icon(
                     Icons.person_outline,
                     color: Colors.black,
@@ -93,7 +95,7 @@ class _EditExpertProfileState extends State<EditExpertProfile> {
                     color: Colors.black,
                   ),
                   textInputType: TextInputType.emailAddress,
-                  textLable: 'Email',
+                  textLable: 'Email'.tr,
                   controllerText: emailController,
                   validat: (String value) {
                     if(value.isEmpty){
@@ -113,7 +115,7 @@ class _EditExpertProfileState extends State<EditExpertProfile> {
                     color: Colors.black,
                   ),
                   textInputType: TextInputType.visiblePassword,
-                  textLable: 'Password',
+                  textLable: 'Password'.tr,
                   controllerText: passwordController,
                   sIcon: suufIconShow,
                   isPass: isPasswordShow,
@@ -147,7 +149,7 @@ class _EditExpertProfileState extends State<EditExpertProfile> {
                   height: 20.0,
                 ),
                 defaultTextFormField(
-                  textLable: 'Experience',
+                  textLable: 'Experience'.tr,
                   pIcon: Icon(
                     Icons.wallet_travel_outlined,
                     color: Colors.black,
@@ -167,7 +169,7 @@ class _EditExpertProfileState extends State<EditExpertProfile> {
                   height: 20.0,
                 ),
                 defaultTextFormField(
-                  textLable: 'Phone Number:',
+                  textLable: 'Phone Number'.tr,
                   pIcon: Icon(
                     Icons.phone_outlined,
                     color: Colors.black,
@@ -187,7 +189,7 @@ class _EditExpertProfileState extends State<EditExpertProfile> {
                   height: 20.0,
                 ),
                 defaultTextFormField(
-                  textLable: 'Address',
+                  textLable: 'Address'.tr,
                   pIcon: Icon(
                     Icons.location_on_outlined,
                     color: Colors.black,
@@ -207,7 +209,7 @@ class _EditExpertProfileState extends State<EditExpertProfile> {
                   height: 20.0,
                 ),
                 defaultTextFormField(
-                  textLable: 'Worktime',
+                  textLable: 'Worktime'.tr,
                   pIcon: Icon(
                     Icons.access_time_outlined,
                     color: Colors.black,
@@ -227,7 +229,7 @@ class _EditExpertProfileState extends State<EditExpertProfile> {
                   height: 20.0,
                 ),
                 Text(
-                  'Chose your consult:',
+                  'Chose your consult:'.tr,
                   style: TextStyle(
                       fontSize: 20.0
                   ),
@@ -283,7 +285,7 @@ class _EditExpertProfileState extends State<EditExpertProfile> {
                 Center(
                   child: defaultMaterialButtonText(
                     text: Text(
-                      'Edit',
+                      'Edit'.tr,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 22.0,
@@ -292,11 +294,25 @@ class _EditExpertProfileState extends State<EditExpertProfile> {
                     colorMaterialButton: Colors.indigoAccent,
                     onPresse: (){
                       if(type == 'expert') {
+                        if(lang == 'en'){
+                          Get.offAndToNamed(
+                              '/homeLayoutExpert',
+                              arguments: ['expert', 'en']
+                          );
+                        }
+                        else if(lang == 'ar'){
+                          Get.offAndToNamed(
+                              '/homeLayoutExpert',
+                              arguments: ['expert', 'ar']
+                          );
+                        }
+                      }
+                      /*if(type == 'expert') {
                         Get.offAndToNamed(
                             '/homeLayoutExpert',
                             arguments: 'expert'
                         );
-                      }
+                      }*/
                       //Get.offAndToNamed('/homeLayoutExpert');
                     },
                     //borderSideButton: BorderRadius.circular(20.0),

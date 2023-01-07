@@ -22,6 +22,8 @@ class Appointment extends StatelessWidget {
     ),
   ];
 
+  var lang = Get.arguments[1];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +34,7 @@ class Appointment extends StatelessWidget {
         elevation: 2.0,
         shadowColor: Colors.black,
         title: Text(
-          'Appointment',
+          'Appointment'.tr,
           style: TextStyle(
             fontSize: 27.0,
             //fontStyle: FontStyle.italic,
@@ -63,7 +65,7 @@ class Appointment extends StatelessWidget {
   }
 
   Widget appintmentItem(AppointmentModel appoint) => defaultAppointmenttItem(
-    date: appoint.date,
-    time: appoint.time,
+    date: appoint.date.tr,
+    time: appoint.time.tr,
   );
 }

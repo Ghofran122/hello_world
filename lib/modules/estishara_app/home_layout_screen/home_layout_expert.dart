@@ -16,7 +16,9 @@ class HomeLayoutExpert extends StatefulWidget {
 
 class _HomeLayoutExpertState extends State<HomeLayoutExpert> {
 
-  var type = Get.arguments;
+  var type = Get.arguments[0];
+
+  var lang = Get.arguments[1];
 
   int currentIndex = 0;
 
@@ -44,25 +46,25 @@ class _HomeLayoutExpertState extends State<HomeLayoutExpert> {
             icon: Icon(
               Icons.menu_outlined,
             ),
-            label: 'Consult',
+            label: 'Consult'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.account_circle,
             ),
-            label: 'Account',
+            label: 'Account'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.date_range_outlined,
             ),
-            label: 'Appointment',
+            label: 'Appointment'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.settings_outlined,
             ),
-            label: 'Settings',
+            label: 'Setting'.tr,
           ),
         ],
       ),

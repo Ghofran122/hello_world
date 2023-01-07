@@ -13,31 +13,31 @@ class Expert extends StatelessWidget {
   List<ExpertModel> users = [
     ExpertModel(
       nameM: 'Ala\'a',
-      experiancM: 'Midical advice',
+      experiancM: 'Medical advice',
     ),
     ExpertModel(
       nameM: 'Aya',
-      experiancM: 'Midical advice',
+      experiancM: 'Psychological advice',
     ),
     ExpertModel(
       nameM: 'Ali',
-      experiancM: 'Midical advice',
+      experiancM: 'Economic advice',
     ),
     ExpertModel(
       nameM: 'Ahmad',
-      experiancM: 'Midical advice',
+      experiancM: 'Medical advice',
     ),
     ExpertModel(
       nameM: 'Eman',
-      experiancM: 'Midical advice',
+      experiancM: 'Medical advice',
     ),
     ExpertModel(
       nameM: 'Saleh',
-      experiancM: 'Midical advice',
+      experiancM: 'Medical advice',
     ),
     ExpertModel(
       nameM: 'Malek',
-      experiancM: 'Midical advice',
+      experiancM: 'Medical advice',
     ),
   ];
 
@@ -51,7 +51,9 @@ class Expert extends StatelessWidget {
 
   String? experianc ='3 years in pharmasite';
 
-  var type = Get.arguments;
+  var type = Get.arguments[0];
+
+  var lang = Get.arguments[1];
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +77,34 @@ class Expert extends StatelessWidget {
                     builder: (context) => Consult(),
                   ));*/
             if(type == 'user') {
+              if(lang == 'en'){
+                Get.offAndToNamed(
+                    '/homeLayoutUser',
+                    arguments: ['user', 'en']
+                );
+              }
+              else if(lang == 'ar'){
+                Get.offAndToNamed(
+                    '/homeLayoutUser',
+                    arguments: ['user', 'ar']
+                );
+              }
+            }
+            else if(type == 'expert') {
+              if(lang == 'en'){
+                Get.offAndToNamed(
+                    '/homeLayoutExpert',
+                    arguments: ['expert', 'en']
+                );
+              }
+              else if(lang == 'ar'){
+                Get.offAndToNamed(
+                    '/homeLayoutExpert',
+                    arguments: ['expert', 'ar']
+                );
+              }
+            }
+            /*if(type == 'user') {
               Get.offAndToNamed(
                   '/homeLayoutUser',
                   arguments: 'user'
@@ -85,11 +115,11 @@ class Expert extends StatelessWidget {
                   '/homeLayoutExpert',
                   arguments: 'expert'
               );
-            }
+            }*/
             //Get.toNamed('/homeLayoutExpert');
             }),
         title: Text(
-          'Expert',
+          'Expert'.tr,
           style: TextStyle(
             fontSize: 27.0,
             //fontStyle: FontStyle.italic,
@@ -110,7 +140,7 @@ class Expert extends StatelessWidget {
                 boxWidth: 400.0,
                 boxHeight: 35.0,
                 boxColor: Colors.white24,
-                textLable: 'Search',
+                textLable: 'Search'.tr,
                 pIcon: Icon(
                   Icons.search,
                   size: 18.0,
@@ -140,6 +170,34 @@ class Expert extends StatelessWidget {
                     ),
                   );
                   if(type == 'user') {
+                    if(lang == 'en'){
+                      Get.offAndToNamed(
+                          '/expertProfile',
+                          arguments: ['user', 'en']
+                      );
+                    }
+                    else if(lang == 'ar'){
+                      Get.offAndToNamed(
+                          '/expertProfile',
+                          arguments: ['user', 'ar']
+                      );
+                    }
+                  }
+                  else if(type == 'expert') {
+                    if(lang == 'en'){
+                      Get.offAndToNamed(
+                          '/expertProfile',
+                          arguments: ['expert', 'en']
+                      );
+                    }
+                    else if(lang == 'ar'){
+                      Get.offAndToNamed(
+                          '/expertProfile',
+                          arguments: ['expert', 'ar']
+                      );
+                    }
+                  }
+                  /*if(type == 'user') {
                     Get.offAndToNamed(
                         '/expertProfile',
                         arguments: 'user'
@@ -150,7 +208,7 @@ class Expert extends StatelessWidget {
                         '/expertProfile',
                         arguments: 'expert'
                     );
-                  }
+                  }*/
                   //Get.toNamed('/expertProfile');
                 },
                 child: ListView.separated(
@@ -170,7 +228,7 @@ class Expert extends StatelessWidget {
 
   Widget expertItem(ExpertModel users) => defaultExpertItem(
     name: users.nameM,
-    experianc: users.experiancM,
+    experianc: users.experiancM.tr,
     //profileImage: profileImageUrl,
     imageProfile: 'assets/images/profile.png',
   );

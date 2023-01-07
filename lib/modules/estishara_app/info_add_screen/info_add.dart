@@ -11,11 +11,13 @@ class AddInformation extends StatefulWidget {
 }
 
 class _AddInformationState extends State<AddInformation> {
-  List<String> consult = ['Medical', 'Psychological', 'Economic'];
+  List<String> consult = ['Medical'.tr, 'Psychological'.tr, 'Economic'.tr];
 
-  String? selectedConsult = 'Medical';
+  String? selectedConsult = 'Medical'.tr;
 
-  var type = Get.arguments;
+  var type = Get.arguments[0];
+
+  var lang = Get.arguments[1];
 
   var experienceController = TextEditingController();
 
@@ -65,7 +67,7 @@ class _AddInformationState extends State<AddInformation> {
                   height: 35.0,
                 ),
                 defaultTextFormField(
-                  textLable: 'Experience',
+                  textLable: 'Experience'.tr,
                   textInputType: TextInputType.text,
                   controllerText: experienceController,
                   validat: (String value) {
@@ -81,7 +83,7 @@ class _AddInformationState extends State<AddInformation> {
                   height: 20.0,
                 ),
                 defaultTextFormField(
-                  textLable: 'Phone Number:',
+                  textLable: 'Phone Number:'.tr,
                   textInputType: TextInputType.phone,
                   controllerText: phoneNumberController,
                   validat: (String value) {
@@ -97,7 +99,7 @@ class _AddInformationState extends State<AddInformation> {
                   height: 20.0,
                 ),
                 defaultTextFormField(
-                  textLable: 'Address',
+                  textLable: 'Address'.tr,
                   textInputType: TextInputType.streetAddress,
                   controllerText: addressController,
                   validat: (String value) {
@@ -113,7 +115,7 @@ class _AddInformationState extends State<AddInformation> {
                   height: 20.0,
                 ),
                 defaultTextFormField(
-                  textLable: 'Worktime',
+                  textLable: 'Worktime'.tr,
                   textInputType: TextInputType.text,
                   controllerText: worktimeController,
                   validat: (String value) {
@@ -129,7 +131,7 @@ class _AddInformationState extends State<AddInformation> {
                   height: 20.0,
                 ),
                 Text(
-                  'Chose your consult:',
+                  'Chose your consult:'.tr,
                   style: TextStyle(
                       fontSize: 20.0
                   ),
@@ -203,11 +205,25 @@ class _AddInformationState extends State<AddInformation> {
                               //(route) => false,
                             );*/
                             if(type == 'expert') {
+                              if(lang == 'en'){
+                                Get.offAndToNamed(
+                                    '/signup',
+                                    arguments: ['expert', 'en']
+                                );
+                              }
+                              else if(lang == 'ar'){
+                                Get.offAndToNamed(
+                                    '/signup',
+                                    arguments: ['expert', 'ar']
+                                );
+                              }
+                            }
+                            /*if(type == 'expert') {
                               Get.offAndToNamed(
                                   '/signup',
                                   arguments: 'expert'
                               );
-                            }
+                            }*/
                             //Get.offAndToNamed('/signup');
                           }
                       ),
@@ -231,11 +247,25 @@ class _AddInformationState extends State<AddInformation> {
                             //(route) => false,
                           );*/
                           if(type == 'expert') {
+                            if(lang == 'en'){
+                              Get.offAndToNamed(
+                                  '/homeLayoutExpert',
+                                  arguments: ['expert', 'en']
+                              );
+                            }
+                            else if(lang == 'ar'){
+                              Get.offAndToNamed(
+                                  '/homeLayoutExpert',
+                                  arguments: ['expert', 'ar']
+                              );
+                            }
+                          }
+                          /*if(type == 'expert') {
                             Get.offAndToNamed(
                                 '/homeLayoutExpert',
                                 arguments: 'expert'
                             );
-                          }
+                          }*/
                         }
                       ),
                       /*SizedBox(

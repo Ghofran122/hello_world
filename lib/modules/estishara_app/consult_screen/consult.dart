@@ -13,7 +13,10 @@ class Consult extends StatefulWidget {
 }
 
 class _ConsultState extends State<Consult> {
-  var type = Get.arguments;
+
+  var type = Get.arguments[0];
+
+  var lang = Get.arguments[1];
 
   var searchController = TextEditingController();
 
@@ -27,7 +30,7 @@ class _ConsultState extends State<Consult> {
         elevation: 2.0,
         shadowColor: Colors.black,
         title: Text(
-          'Consult',
+          'Consults'.tr,
           style: TextStyle(
             fontSize: 27.0,
             //fontStyle: FontStyle.italic,
@@ -51,7 +54,7 @@ class _ConsultState extends State<Consult> {
                 boxWidth: 400.0,
                 boxHeight: 35.0,
                 boxColor: Colors.white24,
-                textLable: 'Search',
+                textLable: 'Search'.tr,
                 pIcon: Icon(
                   Icons.search,
                   size: 18.0,
@@ -69,7 +72,7 @@ class _ConsultState extends State<Consult> {
                 height: 40.0,
               ),
               defaultTextButton(
-                titleAdvice: 'Medical advice',
+                titleAdvice: 'Medical advice'.tr,
                 onPressTB: (){
                   /*Navigator.push(
                     context,
@@ -78,6 +81,34 @@ class _ConsultState extends State<Consult> {
                     ),
                   );*/
                   if(type == 'user') {
+                    if(lang == 'en'){
+                      Get.offAndToNamed(
+                          '/expert',
+                          arguments: ['user', 'en']
+                      );
+                    }
+                    else if(lang == 'ar'){
+                      Get.offAndToNamed(
+                          '/expert',
+                          arguments: ['user', 'ar']
+                      );
+                    }
+                  }
+                  else if(type == 'expert') {
+                    if(lang == 'en'){
+                      Get.offAndToNamed(
+                          '/expert',
+                          arguments: ['expert', 'en']
+                      );
+                    }
+                    else if(lang == 'ar'){
+                      Get.offAndToNamed(
+                          '/expert',
+                          arguments: ['expert', 'ar']
+                      );
+                    }
+                  }
+                  /*if(type == 'user') {
                     Get.offAndToNamed(
                         '/expert',
                         arguments: 'user'
@@ -88,7 +119,7 @@ class _ConsultState extends State<Consult> {
                         '/expert',
                         arguments: 'expert'
                     );
-                  }
+                  }*/
                   //Get.toNamed('/expert');
                 },
               ),
@@ -96,7 +127,7 @@ class _ConsultState extends State<Consult> {
                 height: 40.0,
               ),
               defaultTextButton(
-                titleAdvice: 'Psychological advice',
+                titleAdvice: 'Psychological advice'.tr,
                 onPressTB: (){
                   /*Navigator.push(
                     context,
@@ -105,6 +136,34 @@ class _ConsultState extends State<Consult> {
                     ),
                   );*/
                   if(type == 'user') {
+                    if(lang == 'en'){
+                      Get.offAndToNamed(
+                          '/expert',
+                          arguments: ['user', 'en']
+                      );
+                    }
+                    else if(lang == 'ar'){
+                      Get.offAndToNamed(
+                          '/expert',
+                          arguments: ['user', 'ar']
+                      );
+                    }
+                  }
+                  else if(type == 'expert') {
+                    if(lang == 'en'){
+                      Get.offAndToNamed(
+                          '/expert',
+                          arguments: ['expert', 'en']
+                      );
+                    }
+                    else if(lang == 'ar'){
+                      Get.offAndToNamed(
+                          '/expert',
+                          arguments: ['expert', 'ar']
+                      );
+                    }
+                  }
+                  /*if(type == 'user') {
                     Get.offAndToNamed(
                         '/expert',
                         arguments: 'user'
@@ -115,7 +174,7 @@ class _ConsultState extends State<Consult> {
                         '/expert',
                         arguments: 'expert'
                     );
-                  }
+                  }*/
                   //Get.toNamed('/expert');
                 },
               ),
@@ -123,7 +182,7 @@ class _ConsultState extends State<Consult> {
                 height: 40.0,
               ),
               defaultTextButton(
-                titleAdvice: 'Economic advice',
+                titleAdvice: 'Economic advice'.tr,
                 onPressTB: (){
                   /*Navigator.push(
                     context,
@@ -132,6 +191,34 @@ class _ConsultState extends State<Consult> {
                     ),
                   );*/
                   if(type == 'user') {
+                    if(lang == 'en'){
+                      Get.offAndToNamed(
+                          '/expert',
+                          arguments: ['user', 'en']
+                      );
+                    }
+                    else if(lang == 'ar'){
+                      Get.offAndToNamed(
+                          '/expert',
+                          arguments: ['user', 'ar']
+                      );
+                    }
+                  }
+                  else if(type == 'expert') {
+                    if(lang == 'en'){
+                      Get.offAndToNamed(
+                          '/expert',
+                          arguments: ['expert', 'en']
+                      );
+                    }
+                    else if(lang == 'ar'){
+                      Get.offAndToNamed(
+                          '/expert',
+                          arguments: ['expert', 'ar']
+                      );
+                    }
+                  }
+                  /*if(type == 'user') {
                     Get.offAndToNamed(
                         '/expert',
                         arguments: 'user'
@@ -142,8 +229,9 @@ class _ConsultState extends State<Consult> {
                         '/expert',
                         arguments: 'expert'
                     );
-                  }
+                  }*/
                   print(type);
+                  print(lang);
                   //Get.toNamed('/expert');
                 },
               ),

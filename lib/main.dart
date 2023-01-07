@@ -29,6 +29,7 @@ import 'package:hello_world/modules/estishara_app/setting_screen/setting.dart';
 import 'package:hello_world/modules/estishara_app/signin_screen/signin.dart';
 import 'package:get/get.dart';
 import 'package:hello_world/modules/estishara_app/signup_screen/sing_up.dart';
+import 'package:hello_world/translations.dart';
 
 void main() {
   runApp(MyApp());
@@ -58,6 +59,9 @@ class MyApp extends StatelessWidget{
         GetPage(name: '/reservayions', page: () => Appointment(),),
 
       ],
+      translations: Translation(),
+      locale: Locale('en'),
+      fallbackLocale: Locale('en'),
     );
   }
 

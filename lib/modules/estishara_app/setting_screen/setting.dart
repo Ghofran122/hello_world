@@ -4,6 +4,8 @@ import 'package:hello_world/shared/components/components.dart';
 
 class Setting extends StatelessWidget {
 
+  var lang = Get.arguments[1];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +29,7 @@ class Setting extends StatelessWidget {
               //Get.toNamed('/expertProfilePersonal');
             }),*/
         title: Text(
-          'Setting',
+          'Setting'.tr,
           style: TextStyle(
             fontSize: 27.0,
             //fontStyle: FontStyle.italic,
@@ -46,9 +48,21 @@ class Setting extends StatelessWidget {
         child: Column(
           children: [
             defaultTextButton(
-              titleAdvice: 'Sign out',
+              titleAdvice: 'Sign out'.tr,
               onPressTB: (){
-                Get.toNamed('/first');
+                if(lang == 'en'){
+                  Get.offAndToNamed(
+                      '/first',
+                      arguments: 'en'
+                  );
+                }
+                else if(lang == 'ar'){
+                  Get.offAndToNamed(
+                      '/first',
+                      arguments: 'ar'
+                  );
+                }
+                //Get.toNamed('/first');
               },
             ),
           ],

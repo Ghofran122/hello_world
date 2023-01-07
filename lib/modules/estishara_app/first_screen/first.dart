@@ -15,8 +15,13 @@ class First extends StatefulWidget {
 
 class _FirstState extends State<First> {
 
-  List<String> types = ['user', 'expert'];
-  String? selectedType = 'user';
+  List<String> types = ['user'.tr, 'expert'.tr];
+  String? selectedType = 'user'.tr;
+
+  List<String> langs = ['en', 'ar'];
+  String? selectedLang = 'en';
+
+  var lang = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +50,7 @@ class _FirstState extends State<First> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Use application as:',
+                  'Use application as:'.tr,
                   style: TextStyle(
                       fontSize: 25.0
                   ),
@@ -60,40 +65,89 @@ class _FirstState extends State<First> {
                     selectedType = item;
                   }),
                 ),*/
-            Material(
-              elevation: 10.0,
-              shadowColor: Colors.grey[100],
-              borderRadius: BorderRadius.circular(30.0),
-              color: Colors.white,
-              child: Container(
-                width: 150.0,
-                height: 50.0,
-                child: DropdownButtonFormField<String>(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                    ),
-                    contentPadding: EdgeInsetsDirectional.all(8.0),
-                  ),
-                  value: selectedType,
-                  items: types.map(
-                          (item) => DropdownMenuItem<String>(
-                        value: item,
-                        child: Text(
-                          item,
-                          style: TextStyle(
-                            fontSize: 20.0,
-                          ),
-                        ),
-                      )
-                  ).toList(),
-                  onChanged: (item) => setState(() {
-                     selectedType = item;
-                  }),
+                Material(
+                  elevation: 10.0,
+                  shadowColor: Colors.grey[100],
                   borderRadius: BorderRadius.circular(30.0),
+                  color: Colors.white,
+                  child: Container(
+                    width: 150.0,
+                    height: 50.0,
+                    child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: EdgeInsetsDirectional.all(8.0),
+                      ),
+                      value: selectedType,
+                      items: types.map(
+                              (item) => DropdownMenuItem<String>(
+                            value: item,
+                            child: Text(
+                              item,
+                              style: TextStyle(
+                                fontSize: 20.0,
+                              ),
+                            ),
+                          )
+                      ).toList(),
+                      onChanged: (item) => setState(() {
+                         selectedType = item;
+                      }),
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
                 ),
-              ),
-            ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Text(
+                  'Select language:'.tr,
+                  style: TextStyle(
+                      fontSize: 25.0
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Material(
+                  elevation: 10.0,
+                  shadowColor: Colors.grey[100],
+                  borderRadius: BorderRadius.circular(30.0),
+                  color: Colors.white,
+                  child: Container(
+                    width: 150.0,
+                    height: 50.0,
+                    child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: EdgeInsetsDirectional.all(8.0),
+                      ),
+                      value: selectedLang,
+                      items: langs.map(
+                              (item) => DropdownMenuItem<String>(
+                            value: item,
+                            child: Text(
+                              item,
+                              style: TextStyle(
+                                fontSize: 20.0,
+                              ),
+                            ),
+                          )
+                      ).toList(),
+                      onChanged: (item) =>
+                        {setState(() {
+                          selectedLang = item;
+                        }),
+                        Get.updateLocale(Locale(selectedLang!)),
+                      },
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -103,7 +157,7 @@ class _FirstState extends State<First> {
           defaultMaterialButtonText(
               colorMaterialButton: Colors.indigoAccent,
               text: Text(
-                'Start',
+                'Start'.tr,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30.0,
@@ -122,16 +176,32 @@ class _FirstState extends State<First> {
                   //(route) => false,
                 );*/
                 if(selectedType == 'user') {
-                  Get.offAndToNamed(
-                      '/signin',
-                      arguments: 'user'
-                  );
+                  if(selectedLang == 'en' || lang == 'en'){
+                    Get.offAndToNamed(
+                        '/signin',
+                        arguments: ['user', 'en']
+                    );
+                  }
+                  else if(selectedLang == 'ar' || lang == 'ar'){
+                    Get.offAndToNamed(
+                        '/signin',
+                        arguments: ['user', 'ar']
+                    );
+                  }
                 }
                 else if(selectedType == 'expert') {
-                  Get.offAndToNamed(
-                      '/signin',
-                      arguments: 'expert'
-                  );
+                  if(selectedLang == 'en' || lang == 'en'){
+                    Get.offAndToNamed(
+                        '/signin',
+                        arguments: ['expert', 'en']
+                    );
+                  }
+                  else if(selectedLang == 'ar' || lang == 'ar'){
+                    Get.offAndToNamed(
+                        '/signin',
+                        arguments: ['expert', 'ar']
+                    );
+                  }
                 }
               }
           ),

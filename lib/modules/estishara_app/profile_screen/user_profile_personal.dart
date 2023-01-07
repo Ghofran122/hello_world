@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hello_world/shared/components/components.dart';
 
 class UserProfilePersonal extends StatelessWidget {
@@ -12,7 +13,7 @@ class UserProfilePersonal extends StatelessWidget {
         elevation: 2.0,
         shadowColor: Colors.black,
         title: Text(
-          'Your Profile',
+          'Profile'.tr,
           style: TextStyle(
             fontSize: 27.0,
             //fontStyle: FontStyle.italic,
@@ -40,21 +41,21 @@ class UserProfilePersonal extends StatelessWidget {
                     height: 15.0,
                   ),
                   defaultTextField(
-                    discribtionText: 'Name:',
+                    discribtionText: 'Name:'.tr,
                     text: 'Aya Hammad',
                   ),
                   SizedBox(
                     height: 20.0,
                   ),
                   defaultTextField(
-                    discribtionText: 'Email:',
+                    discribtionText: 'Email:'.tr,
                     text: 'Aya@gmail.com',
                   ),
                   SizedBox(
                     height: 20.0,
                   ),
                   defaultTextField(
-                    discribtionText: 'Password:',
+                    discribtionText: 'Password:'.tr,
                     text: '**********',
                   ),
                 ],

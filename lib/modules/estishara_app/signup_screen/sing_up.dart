@@ -14,7 +14,9 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
 
-  var type = Get.arguments;
+  var type = Get.arguments[0];
+
+  var lang = Get.arguments[1];
 
   var emailController = TextEditingController();
 
@@ -60,7 +62,7 @@ class _SignUpState extends State<SignUp> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Welcome!',
+                    'Welcome!'.tr,
                     style: TextStyle(
                       fontSize: 45.0,
                       fontWeight: FontWeight.bold,
@@ -70,7 +72,7 @@ class _SignUpState extends State<SignUp> {
                     height: 10.0,
                   ),
                   Text(
-                    'Creat your account now',
+                    'Creat your account now'.tr,
                     style: TextStyle(
                       color: Colors.grey[600],
                       fontSize: 16.0,
@@ -86,7 +88,7 @@ class _SignUpState extends State<SignUp> {
                       color: Colors.black,
                     ),
                     textInputType: TextInputType.name,
-                    textLable: 'Name',
+                    textLable: 'Name'.tr,
                     controllerText: nameController,
                     validat: (String value) {
                       if(value.isEmpty){
@@ -106,7 +108,7 @@ class _SignUpState extends State<SignUp> {
                       color: Colors.black,
                     ),
                     textInputType: TextInputType.emailAddress,
-                    textLable: 'Email',
+                    textLable: 'Email'.tr,
                     controllerText: emailController,
                     validat: (String value) {
                       if(value.isEmpty){
@@ -126,7 +128,7 @@ class _SignUpState extends State<SignUp> {
                       color: Colors.black,
                     ),
                     textInputType: TextInputType.visiblePassword,
-                    textLable: 'Password',
+                    textLable: 'Password'.tr,
                     controllerText: passwordController,
                     sIcon: suufIconShow,
                     isPass: isPasswordShow,
@@ -165,7 +167,7 @@ class _SignUpState extends State<SignUp> {
                       color: Colors.black,
                     ),
                     textInputType: TextInputType.visiblePassword,
-                    textLable: 'Confirm Password',
+                    textLable: 'Confirm Password'.tr,
                     controllerText: cPasswordController,
                     sIcon: cSuffIconShow,
                     isPass: cIsPasswordShow,
@@ -202,7 +204,7 @@ class _SignUpState extends State<SignUp> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'Sign Up',
+                        'Sign Up'.tr,
                         style: TextStyle(
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold,
@@ -228,6 +230,34 @@ class _SignUpState extends State<SignUp> {
                               //(route) => false,
                             );*/
                             if(type == 'user') {
+                              if(lang == 'en'){
+                                Get.offAndToNamed(
+                                    '/homeLayoutUser',
+                                    arguments: ['user', 'en']
+                                );
+                              }
+                              else if(lang == 'ar'){
+                                Get.offAndToNamed(
+                                    '/homeLayoutUser',
+                                    arguments: ['user', 'ar']
+                                );
+                              }
+                            }
+                            else if(type == 'expert') {
+                              if(lang == 'en'){
+                                Get.offAndToNamed(
+                                    '/addInformation',
+                                    arguments: ['expert', 'en']
+                                );
+                              }
+                              else if(lang == 'ar'){
+                                Get.offAndToNamed(
+                                    '/addInformation',
+                                    arguments: ['expert', 'ar']
+                                );
+                              }
+                            }
+                            /*if(type == 'user') {
                               Get.offAndToNamed(
                                   '/homeLayoutUser',
                                   arguments: 'user'
@@ -238,7 +268,7 @@ class _SignUpState extends State<SignUp> {
                                   '/addInformation',
                                   arguments: 'expert'
                               );
-                            }
+                            }*/
                             //Get.toNamed('/addInformation');
                           }
                       ),
@@ -251,7 +281,7 @@ class _SignUpState extends State<SignUp> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Already have an account?',
+                        'Already have an account?'.tr,
                       ),
                       TextButton(
                         onPressed: (){
@@ -263,6 +293,34 @@ class _SignUpState extends State<SignUp> {
                                 (route) => false,
                           );*/
                           if(type == 'user') {
+                            if(lang == 'en'){
+                              Get.offAndToNamed(
+                                  '/signin',
+                                  arguments: ['user', 'en']
+                              );
+                            }
+                            else if(lang == 'ar'){
+                              Get.offAndToNamed(
+                                  '/signin',
+                                  arguments: ['user', 'ar']
+                              );
+                            }
+                          }
+                          else if(type == 'expert') {
+                            if(lang == 'en'){
+                              Get.offAndToNamed(
+                                  '/signin',
+                                  arguments: ['expert', 'en']
+                              );
+                            }
+                            else if(lang == 'ar'){
+                              Get.offAndToNamed(
+                                  '/signin',
+                                  arguments: ['expert', 'ar']
+                              );
+                            }
+                          }
+                          /*if(type == 'user') {
                             Get.offAndToNamed(
                                 '/signin',
                                 arguments: 'user'
@@ -273,11 +331,11 @@ class _SignUpState extends State<SignUp> {
                                 '/signin',
                                 arguments: 'expert'
                             );
-                          }
+                          }*/
                           //Get.offAndToNamed('/signin');
                         },
                         child: Text(
-                          'Sign in',
+                          'Sign in'.tr,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.indigoAccent,

@@ -13,7 +13,9 @@ class HomeLayoutUser extends StatefulWidget {
 
 class _HomeLayoutUserState extends State<HomeLayoutUser> {
 
-  var type = Get.arguments;
+  var type = Get.arguments[0];
+
+  var lang = Get.arguments[1];
 
   int currentIndex = 0;
 
@@ -40,19 +42,19 @@ class _HomeLayoutUserState extends State<HomeLayoutUser> {
             icon: Icon(
               Icons.menu_outlined,
             ),
-            label: 'Consult',
+            label: 'Consult'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.account_circle,
             ),
-            label: 'Account',
+            label: 'Account'.tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.settings_outlined,
             ),
-            label: 'Settings',
+            label: 'Setting'.tr,
           ),
         ],
       ),

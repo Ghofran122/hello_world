@@ -4,7 +4,9 @@ import 'package:hello_world/shared/components/components.dart';
 
 class ExpertProfilePersonal extends StatelessWidget {
 
-  var type = Get.arguments;
+  var type = Get.arguments[0];
+
+  var lang = Get.arguments[1];
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class ExpertProfilePersonal extends StatelessWidget {
               //Get.toNamed('/consult');
             }),*/
         title: Text(
-          'Your Profile',
+          'Profile'.tr,
           style: TextStyle(
             fontSize: 27.0,
             //fontStyle: FontStyle.italic,
@@ -48,11 +50,25 @@ class ExpertProfilePersonal extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           if(type == 'expert') {
+            if(lang == 'en'){
+              Get.offAndToNamed(
+                  '/editExpertProfile',
+                  arguments: ['expert', 'en']
+              );
+            }
+            else if(lang == 'ar'){
+              Get.offAndToNamed(
+                  '/editExpertProfile',
+                  arguments: ['expert', 'ar']
+              );
+            }
+          }
+          /*if(type == 'expert') {
             Get.offAndToNamed(
                 '/editExpertProfile',
                 arguments: 'expert'
             );
-          }
+          }*/
           //Get.offAndToNamed('/editExpertProfile');
         },
         child: Icon(
@@ -122,7 +138,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                           width: 120.0,
                           child: defaultMaterialButtonText(
                               text: Text(
-                                'Your balance',
+                                'Your balance'.tr,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 15.0,
@@ -144,7 +160,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                     height: 15.0,
                   ),
                   defaultTextField(
-                    discribtionText: 'Name:',
+                    discribtionText: 'Name:'.tr,
                     text: 'Aya Hammad',
                     //fieldHeight: 80.0
                   ),
@@ -152,7 +168,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                     height: 20.0,
                   ),
                   defaultTextField(
-                    discribtionText: 'Email:',
+                    discribtionText: 'Email:'.tr,
                     text: 'Aya@gmail.com',
                     //fieldHeight: 80.0
                   ),
@@ -160,7 +176,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                     height: 20.0,
                   ),
                   defaultTextField(
-                    discribtionText: 'Password:',
+                    discribtionText: 'Password:'.tr,
                     text: '**********',
                     //fieldHeight: 80.0
                   ),
@@ -168,7 +184,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                     height: 20.0,
                   ),
                   defaultTextField(
-                    discribtionText: 'Experience:',
+                    discribtionText: 'Experience:'.tr,
                     text: '3 years of work in the field of pharmacy',
                     fieldHeight: 60.0
                   ),
@@ -176,7 +192,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                     height: 20.0,
                   ),
                   defaultTextField(
-                    discribtionText: 'Phone Number:',
+                    discribtionText: 'Phone Number:'.tr,
                     text: '+2334567890',
                     //fieldHeight: 80.0
                   ),
@@ -184,7 +200,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                     height: 20.0,
                   ),
                   defaultTextField(
-                    discribtionText: 'Address:',
+                    discribtionText: 'Address:'.tr,
                     text: 'New York, America',
                     //fieldHeight: 80.0
                   ),
@@ -192,7 +208,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                     height: 20.0,
                   ),
                   defaultTextField(
-                    discribtionText: 'Worktime:',
+                    discribtionText: 'Worktime:'.tr,
                     text: 'Mon to Wed from 08:00 AM to 04:00 PM',
                     //fieldHeight: 80.0,
                   ),
@@ -200,7 +216,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                     height: 20.0,
                   ),
                   defaultTextField(
-                    discribtionText: 'Consultation provided:',
+                    discribtionText: 'Consultation provided:'.tr,
                     text: 'Medical',
                     //fieldHeight: 80.0
                   ),

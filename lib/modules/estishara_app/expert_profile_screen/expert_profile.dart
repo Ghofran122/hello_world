@@ -14,7 +14,9 @@ class ExpertProfile extends StatelessWidget {
 
   bool isBottomSheetShown =false;
 
-  var type = Get.arguments;
+  var type = Get.arguments[0];
+
+  var lang = Get.arguments[1];
 
   @override
   Widget build(BuildContext context) {
@@ -27,40 +29,68 @@ class ExpertProfile extends StatelessWidget {
         elevation: 2.0,
         shadowColor: Colors.black,
         leading: IconButton(
-            color: Colors.grey[100],
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.indigoAccent,
-            ),
-            onPressed: (){
-              /*Navigator.pop(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Expert(),
-                  ));*/
-              if(type == 'user') {
+          color: Colors.grey[100],
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.indigoAccent,
+          ),
+          onPressed: (){
+            /*Navigator.pop(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Expert(),
+                ));*/
+            if(type == 'user') {
+              if(lang == 'en'){
                 Get.offAndToNamed(
-                    '/expert',
-                    arguments: 'user'
+                  '/expert',
+                  arguments: ['user', 'en']
                 );
               }
-              else if(type == 'expert') {
+              else if(lang == 'ar'){
                 Get.offAndToNamed(
-                    '/expert',
-                    arguments: 'expert'
+                  '/expert',
+                  arguments: ['user', 'ar']
                 );
               }
-              //Get.toNamed('/expert');
-            }),
-        title: Text(
-          'Profile',
+            }
+            else if(type == 'expert') {
+              if(lang == 'en'){
+                Get.offAndToNamed(
+                  '/expert',
+                  arguments: ['expert', 'en']
+                );
+              }
+              else if(lang == 'ar'){
+                Get.offAndToNamed(
+                  '/expert',
+                  arguments: ['expert', 'ar']
+                );
+              }
+            }
+            /*if(type == 'user') {
+              Get.offAndToNamed(
+                  '/expert',
+                  arguments: 'user'
+              );
+            }
+            else if(type == 'expert') {
+              Get.offAndToNamed(
+                  '/expert',
+                  arguments: 'expert'
+              );
+            }*/
+            //Get.toNamed('/expert');
+          }),
+        /*title: Text(
+          'Profile'.tr,
           style: TextStyle(
             fontSize: 27.0,
             //fontStyle: FontStyle.italic,
             //letterSpacing: 1.0,
             color: Colors.black,
           ),
-        ),
+        ),*/
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -120,7 +150,7 @@ class ExpertProfile extends StatelessWidget {
                       width: 120.0,
                       child: defaultMaterialButtonText(
                         text: Text(
-                          '       Book appintment',
+                          '       Book appintment'.tr,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15.0,
@@ -136,7 +166,7 @@ class ExpertProfile extends StatelessWidget {
                               child: Column(
                                 children: [
                                   defaultTextFormField(
-                                    textLable: 'date',
+                                    textLable: 'date'.tr,
                                     textInputType: TextInputType.text,
                                     controllerText: dateController,
                                     pIcon: Icon(
@@ -158,7 +188,7 @@ class ExpertProfile extends StatelessWidget {
                                     height: 25.0,
                                   ),
                                   defaultTextFormField(
-                                    textLable: 'time',
+                                    textLable: 'time'.tr,
                                     textInputType: TextInputType.text,
                                     controllerText: timeController,
                                     pIcon: Icon(
@@ -207,14 +237,14 @@ class ExpertProfile extends StatelessWidget {
                 height: 15.0,
               ),
               defaultTextField(
-                discribtionText: 'Name:',
+                discribtionText: 'Name:'.tr,
                 text: 'Aya Hammad',
               ),
               SizedBox(
                 height: 20.0,
               ),
               defaultTextField(
-                  discribtionText: 'Experience:',
+                  discribtionText: 'Experience:'.tr,
                   text: '3 years of work in the field of pharmacy',
                 fieldHeight: 60.0,
               ),
@@ -272,21 +302,21 @@ class ExpertProfile extends StatelessWidget {
                 height: 20.0,
               ),
               defaultTextField(
-                  discribtionText: 'Phone Number:',
+                  discribtionText: 'Phone Number:'.tr,
                   text: '+2334567890',
               ),
               SizedBox(
                 height: 20.0,
               ),
               defaultTextField(
-                discribtionText: 'Address:',
+                discribtionText: 'Address:'.tr,
                 text: 'New York, America',
               ),
               SizedBox(
                 height: 20.0,
               ),
               defaultTextField(
-                discribtionText: 'Worktime:',
+                discribtionText: 'Worktime:'.tr,
                 text: 'Mon to Wed from 08:00 AM to 04:00 PM',
                 fieldHeight: 60.0
               ),
@@ -294,7 +324,7 @@ class ExpertProfile extends StatelessWidget {
                 height: 20.0,
               ),
               defaultTextField(
-                discribtionText: 'Consultation provided:',
+                discribtionText: 'Consultation provided:'.tr,
                 text: 'Medical',
               ),
               SizedBox(

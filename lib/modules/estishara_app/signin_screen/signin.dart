@@ -10,20 +10,17 @@ import 'package:hello_world/shared/components/components.dart';
 
 class SignIn extends StatefulWidget {
 
-  var type = Get.arguments;
-
   @override
   State<SignIn> createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
 
-
-
-
   SignInController controller = Get.find();
 
-  var type = Get.arguments;
+  var type = Get.arguments[0];
+
+  var lang = Get.arguments[1];
 
   var emailController = TextEditingController();
 
@@ -56,7 +53,7 @@ class _SignInState extends State<SignIn> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Welcome Back!',
+                    'Welcome Back!'.tr,
                     style: TextStyle(
                       fontSize: 45.0,
                       fontWeight: FontWeight.bold,
@@ -66,7 +63,7 @@ class _SignInState extends State<SignIn> {
                     height: 10.0,
                   ),
                   Text(
-                    'Sign in to your account now',
+                    'Sign in to your account now'.tr,
                     style: TextStyle(
                       color: Colors.grey[600],
                       fontSize: 16.0,
@@ -81,7 +78,7 @@ class _SignInState extends State<SignIn> {
                       color: Colors.black,
                     ),
                     textInputType: TextInputType.emailAddress,
-                    textLable: 'Email',
+                    textLable: 'Email'.tr,
                     controllerText: emailController,
                     onChang: (value) => controller.email = value,
                     validat: (String value) {
@@ -100,7 +97,7 @@ class _SignInState extends State<SignIn> {
                       color: Colors.black,
                     ),
                     textInputType: TextInputType.visiblePassword,
-                    textLable: 'Password',
+                    textLable: 'Password'.tr,
                     controllerText: passwordController,
                     sIcon: suufIconShow,
                     isPass: isPasswordShow,
@@ -135,7 +132,7 @@ class _SignInState extends State<SignIn> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'Sign in',
+                        'Sign in'.tr,
                         style: TextStyle(
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold,
@@ -164,6 +161,34 @@ class _SignInState extends State<SignIn> {
                               //(route) => false,
                             );*/
                             if(type == 'user') {
+                              if(lang == 'en'){
+                                Get.offAndToNamed(
+                                    '/homeLayoutUser',
+                                    arguments: ['user', 'en']
+                                );
+                              }
+                              else if(lang == 'ar'){
+                                Get.offAndToNamed(
+                                    '/homeLayoutUser',
+                                    arguments: ['user', 'ar']
+                                );
+                              }
+                            }
+                            else if(type == 'expert') {
+                              if(lang == 'en'){
+                                Get.offAndToNamed(
+                                    '/homeLayoutExpert',
+                                    arguments: ['expert', 'en']
+                                );
+                              }
+                              else if(lang == 'ar'){
+                                Get.offAndToNamed(
+                                    '/homeLayoutExpert',
+                                    arguments: ['expert', 'ar']
+                                );
+                              }
+                            }
+                            /*if(type == 'user') {
                               Get.offAndToNamed(
                                   '/homeLayoutUser',
                                   arguments: 'user'
@@ -174,7 +199,7 @@ class _SignInState extends State<SignIn> {
                                   '/homeLayoutExpert',
                                   arguments: 'expert'
                               );
-                            }
+                            }*/
                           }
                         }
                       ),
@@ -187,7 +212,7 @@ class _SignInState extends State<SignIn> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Don\'t have an account yet?',
+                        'Don\'t have an account yet?'.tr,
                       ),
                       TextButton(
                         onPressed: (){
@@ -199,6 +224,34 @@ class _SignInState extends State<SignIn> {
                             (route) => false,
                           );*/
                           if(type == 'user') {
+                            if(lang == 'en'){
+                              Get.offAndToNamed(
+                                  '/signup',
+                                  arguments: ['user', 'en']
+                              );
+                            }
+                            else if(lang == 'ar'){
+                              Get.offAndToNamed(
+                                  '/signup',
+                                  arguments: ['user', 'ar']
+                              );
+                            }
+                          }
+                          else if(type == 'expert') {
+                            if(lang == 'en'){
+                              Get.offAndToNamed(
+                                  '/signup',
+                                  arguments: ['expert', 'en']
+                              );
+                            }
+                            else if(lang == 'ar'){
+                              Get.offAndToNamed(
+                                  '/signup',
+                                  arguments: ['expert', 'ar']
+                              );
+                            }
+                          }
+                          /*if(type == 'user') {
                             Get.offAndToNamed(
                                 '/signup',
                                 arguments: 'user'
@@ -209,10 +262,10 @@ class _SignInState extends State<SignIn> {
                                 '/signup',
                                 arguments: 'expert'
                             );
-                          }
+                          }*/
                         },
                         child: Text(
-                          'Sign up',
+                          'Sign up'.tr,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.indigoAccent,
