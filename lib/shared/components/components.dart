@@ -397,19 +397,19 @@ Widget defaultAppointmenttItem({
                     date,
                     style: TextStyle(
                       color: Colors.grey[600],
-                      fontSize: 19.0,
+                      fontSize: 18.0,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                   SizedBox(
-                    height: 9.0,
+                    height: 8.0,
                   ),
                   Container(
                     child: Text(
                       time,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 18.0,
+                        fontSize: 15.0,
                         //fontWeight: FontWeight.w400,
                       ),
                     ),

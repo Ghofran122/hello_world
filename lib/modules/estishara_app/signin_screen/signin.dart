@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hello_world/models/signin.dart';
 import 'package:hello_world/modules/estishara_app/consult_screen/consult.dart';
 import 'package:hello_world/modules/estishara_app/info_add_screen/info_add.dart';
 import 'package:hello_world/modules/estishara_app/signin_screen/signin_controller.dart';
+import 'package:hello_world/modules/estishara_app/signin_screen/signin_service.dart';
 import 'package:hello_world/modules/estishara_app/signup_screen/sing_up.dart';
 import 'package:hello_world/shared/components/components.dart';
 
@@ -32,6 +34,8 @@ class _SignInState extends State<SignIn> {
     Icons.visibility_outlined,
     color: Colors.grey[600],
   );
+
+  SigninService signin_service_obj = SigninService();
 
   bool isPasswordShow = true;
 
@@ -151,8 +155,14 @@ class _SignInState extends State<SignIn> {
                           borderSideButton: BorderSide.none,
                         onPresse: (){
                           if(formKey.currentState!.validate()){
-                            print(controller.email);
-                            print(passwordController.text);
+                            SigninModels sign_in_model_obj = SigninModels(
+                              email: emailController.text.toString(),
+                              password: passwordController.text.toString(),
+                            );
+                            // print(sign_in_model_obj.email);
+                            signin_service_obj.signin(sign_in_model_obj);
+                            /*print(controller.email);
+                            print(passwordController.text);*/
                             /*Navigator.push(
                               context,
                               MaterialPageRoute(

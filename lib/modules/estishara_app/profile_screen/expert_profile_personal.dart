@@ -210,7 +210,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                   defaultTextField(
                     discribtionText: 'Worktime:'.tr,
                     text: 'Mon to Wed from 08:00 AM to 04:00 PM',
-                    //fieldHeight: 80.0,
+                    fieldHeight: 60.0,
                   ),
                   SizedBox(
                     height: 20.0,
